@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', sans-serif;
+  color: #17251f;
+  background: #f9f8f4;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --forest: #275848;
+  --ink: #17251f;
+  --paper: #f9f8f4;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+::selection { color: white; background: #275848; }
+
+.font-display { font-family: 'Playfair Display', serif; }
+.surface-grid {
+  background-color: #f9f8f4;
+  background-image: linear-gradient(rgba(39, 88, 72, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(39, 88, 72, .035) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.reveal { animation: reveal .55s cubic-bezier(.2,.75,.25,1) both; }
+@keyframes reveal { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+@layer components {
+  .nav-link { @apply text-xs font-medium text-ink/65 transition hover:text-forest; }
+  .icon-button { @apply relative grid h-10 w-10 place-items-center text-ink/75 transition hover:bg-black/5 hover:text-forest; }
+  .filter-pill { @apply shrink-0 border border-ink/15 px-3.5 py-2 text-[11px] font-medium text-ink/65 transition hover:border-forest hover:text-forest; }
+  .filter-pill-active { @apply border-forest bg-forest text-white hover:bg-forest hover:text-white; }
+  .action-button { @apply inline-flex min-h-12 items-center justify-center gap-2 bg-forest px-5 py-3 text-xs font-semibold uppercase tracking-[.1em] text-white transition hover:bg-ink disabled:cursor-not-allowed disabled:opacity-55; }
+  .field-label, .admin-label { @apply grid gap-1.5 text-[11px] font-semibold text-ink/65; }
+  .field-input, .admin-input { @apply min-w-0 border border-ink/15 bg-white px-3 py-2.5 text-sm font-normal text-ink outline-none transition focus:border-forest focus:ring-1 focus:ring-forest/20; }
+  .data-table { @apply w-full min-w-[680px] border-collapse text-left text-xs; }
+  .data-table th { @apply border-y border-ink/10 bg-[#f7f8f5] px-5 py-3 text-[9px] font-semibold uppercase tracking-[.14em] text-ink/45; }
+  .data-table td { @apply border-b border-ink/10 px-5 py-3.5 align-middle text-ink/75; }
+}
